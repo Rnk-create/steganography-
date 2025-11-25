@@ -62,3 +62,25 @@ Enter the **same key** used during encryption
 4. **Result**  
 The tool extracts and decrypts the hidden text, then prints: "Your Password : 12345678"
 
+## 🧠 How It Works
+
+### **1. LSB (Least Significant Bit) Steganography**
+The tool converts your secret message into binary and embeds it into the **least significant bits** of the image’s pixel data.  
+These bit changes are extremely small — for example, changing a pixel value from `254` to `255` — making them invisible to the human eye.
+
+### **2. XOR-Based Encryption**
+Before embedding, your message is encrypted using your password through **XOR logic**.  
+Without the correct key, the extracted bits appear as meaningless noise.
+
+---
+
+## ⚠️ Notes
+
+### **Image Format**
+Use **PNG** files only.  
+Formats like **JPG** apply compression that destroys hidden data and makes extraction impossible.
+
+### **Capacity**
+Your message size depends on the image resolution:  
+More pixels → more available bits → larger message capacity.
+
