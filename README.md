@@ -1,72 +1,64 @@
-Secure LSB Steganography Tool
+## Secure LSB Steganography Tool
 
 A Python-based command-line tool that hides secret text messages inside images using Least Significant Bit (LSB) steganography. It includes XOR encryption to ensure that even if the message is found, it cannot be read without a password.
 
-📸 Overview & Setup
+## To execute this file:
 
-1. Prerequisites
-
-You need Python installed on your system. 
-
-2. Installation
-
-install the required library:
-
-pip install Pillow
+1. Install the Pillow library:
+   
+<img width="1144" height="165" alt="Screenshot 2025-11-25 220618" src="https://github.com/user-attachments/assets/151ac1f6-b021-4870-88c9-fad880a64d60" />
 
 
-What is happening here?
-As shown in the screenshot below, pip checks if Pillow is installed. If it's already there (as seen in the output "Requirement already satisfied"), you are ready to go.
-
-🚀 How to Use
-
-Run the tool by executing the script:
-
-python stegano.py
+2. Run the code and enter the key, password and secret message accordingly:
+   
+<img width="1453" height="452" alt="Screenshot 2025-11-25 220911" src="https://github.com/user-attachments/assets/3a6a368b-5b57-4917-b4f4-904b1fa6d9ed" />
 
 
-(Note: Replace stegano.py with your actual filename if it's different, e.g., steganography_tool.py)
+3. Now to decode this, use the same key and you will get your secret message:
+   
+<img width="1450" height="485" alt="Screenshot 2025-11-25 220959" src="https://github.com/user-attachments/assets/2eae9a46-c0fd-4184-a921-7849cb6f7fc2" />
 
-A. Hiding a Message (Encryption)
 
-Select option 'h' when prompted to hide a message.
+## 🔐 Hiding a Message (Encryption)
 
-Steps shown in the screenshot:
+1. **Select Mode**  
+   Type `h` to enter **Hide mode**.
 
-Mode: Type h to enter Hide mode.
+2. **Choose Cover Image**  
+   Press **Enter** to use the default `cover_image.png`,  
+   or type the filename of the image you want to use.
 
-Cover Image: Press Enter to use the default cover_image.png (or type your own filename).
+3. **Output File Name**  
+   Enter the name of the stego image you want to generate  
+   (e.g., `secret_msg.png`).
 
-Output Name: Type the name for the new file (e.g., secret_msg.png).
+4. **Enter Secret Message**  
+   Type the text you want to hide  
+   (example: `here's your password : 12345678`).
 
-Secret Message: Type the text you want to hide (e.g., here's your password : 12345678).
+5. **Enter Password / Key**  
+   Provide a key (e.g., `rnk`).  
+   This key encrypts your message before embedding it.
 
-Password (Key): Enter a secret key (e.g., rnk). This encrypts your text before hiding it.
+6. **Success**  
+   The tool will confirm: "Encrypted message hidden in 'secret_msg.png'".
 
-Success: The tool confirms "Encrypted message hidden in 'secret_msg.png'".
 
-B. Extracting a Message (Decryption)
+---
 
-Select option 'e' when prompted to extract a message.
+## 🔓 Extracting a Message (Decryption)
 
-Steps shown in the screenshot:
+1. **Select Mode**  
+Type `e` to enter **Extract mode**.
 
-Mode: Type e to enter Extract mode.
+2. **Provide Stego Image**  
+Enter the filename that contains the hidden message  
+(e.g., `secret_msg.png`).
 
-Stego Image: Type the filename containing the hidden message (e.g., secret_msg.png).
+3. **Enter Password / Key**  
+Enter the **same key** used during encryption  
+(e.g., `rnk`).
 
-Password (Key): Enter the same key you used to hide the message (rnk).
+4. **Result**  
+The tool extracts and decrypts the hidden text, then prints: "Your Password : 12345678"
 
-Result: The tool reads the hidden bits, decrypts them using your key, and prints the original secret: here's your password : 12345678.
-
-🧠 How it Works
-
-LSB (Least Significant Bit): The tool takes the binary version of your message and replaces the very last bit of the image's color data. This change is so small (e.g., changing a color value from 254 to 255) that the human eye cannot see it.
-
-XOR Cipher: Before hiding, the text is mixed with your password using XOR logic. This ensures that without the correct password, the extracted bits look like random garbage.
-
-⚠️ Notes
-
-Image Format: Always use .PNG files. Formats like JPG compress images, which destroys the hidden data.
-
-Capacity: The amount of text you can hide depends on the image size. A larger image = more pixels = more space for text.
